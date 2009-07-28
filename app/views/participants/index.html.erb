@@ -1,0 +1,26 @@
+<h1>Listing participants</h1>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Name</th>
+    <th>Lighthouse</th>
+    <th>Github</th>
+  </tr>
+
+<% @participants.each do |participant| %>
+  <tr>
+    <td><%=h participant.email %></td>
+    <td><%=h participant.name %></td>
+    <td><%=h participant.lighthouse_id %></td>
+    <td><%=h participant.github_id %></td>
+    <td><%= link_to 'Show', participant %></td>
+    <td><%= link_to 'Edit', edit_participant_path(participant) %></td>
+    <td><%= link_to 'Destroy', participant, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New participant', new_participant_path %>

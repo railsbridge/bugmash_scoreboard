@@ -1,0 +1,28 @@
+<h1>Editing participant</h1>
+
+<% form_for(@participant) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :lighthouse_id %><br />
+    <%= f.text_field :lighthouse_id %>
+  </p>
+  <p>
+    <%= f.label :github_id %><br />
+    <%= f.text_field :github_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @participant %> |
+<%= link_to 'Back', participants_path %>
