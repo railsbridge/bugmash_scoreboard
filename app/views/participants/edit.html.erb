@@ -1,5 +1,3 @@
-<h1>Editing participant</h1>
-
 <% form_for(@participant) do |f| %>
   <%= f.error_messages %>
 
@@ -24,5 +22,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @participant %> |
-<%= link_to 'Back', participants_path %>
+<%= link_to_if(signed_in?, 'sign out', signout_path, :method => :delete) {} %>

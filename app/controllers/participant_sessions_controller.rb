@@ -16,7 +16,6 @@ class ParticipantSessionsController < ApplicationController
   
   def destroy
     current_user_session.destroy
-    flash[:success] = "Logout successful!"
-    redirect_back_or_default login_path
+    redirect_back_or_default signin_path
   end
 end

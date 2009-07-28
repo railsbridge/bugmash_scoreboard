@@ -2,15 +2,16 @@ require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class ParticipantCanSignInAndSignOutTest < ActionController::IntegrationTest
   context 'a registered Participant' do
-    setup { @participant = Factory(:participant) }
-    
     should 'be able to sign in' do
-      visit signin_path
-      fill_in 'Email', :with => @participant.email
-      fill_in 'Password', :with => 'sekrit'
-      click_button 'sign in'
-
+      sign_participant_in
       assert_equal participant_path(@participant), path
+    end
+
+    should 'be able to sign out' do
+      sign_participant_in
+      visit edit_participant_path(@participant)
+      click_link 'sign out'
+      assert_equal signin_path, path
     end
   end
 end

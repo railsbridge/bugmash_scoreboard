@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
-    @current_user_session = UserSession.find
+    @current_user_session = ParticipantSession.find
   end
   
   alias signed_in? current_user_session
@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     unless current_user
       store_location
       flash[:notice] = "You must be logged in to access this page"
-      redirect_to login_path
+      redirect_to signin_path
       return false
     end
   end
