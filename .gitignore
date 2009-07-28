@@ -1,0 +1,6 @@
+log/*
+tmp/**/*
+tmp/*
+db/*.sqlite3
+db/development_structure.sql
+*.DS_Store
