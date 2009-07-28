@@ -25,4 +25,8 @@ ActiveRecord::Schema.define(:version => 20090728140801) do
     t.datetime "updated_at"
   end
 
+  add_index "participants", ["email"], :name => "index_participants_on_email"
+  add_index "participants", ["perishable_token"], :name => "index_participants_on_perishable_token"
+  add_index "participants", ["persistence_token"], :name => "index_participants_on_persistence_token"
+
 end

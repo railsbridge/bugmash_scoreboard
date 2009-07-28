@@ -14,9 +14,15 @@ class CreateParticipants < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :participants, :email
+    add_index :participants, :persistence_token
+    add_index :participants, :perishable_token
   end
 
   def self.down
+    remove_index :participants, :email
+    remove_index :participants, :persistence_token
+    remove_index :participants, :perishable_token
     drop_table :participants
   end
 end
