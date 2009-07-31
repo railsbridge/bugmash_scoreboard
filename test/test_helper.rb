@@ -9,7 +9,7 @@ Webrat.configure do |config|
 end
 
 class ActiveSupport::TestCase
-  include RR::Adapters::TestUnit
+  include RR::Adapters::TestUnit unless include?(RR::Adapters::TestUnit)
 
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false
