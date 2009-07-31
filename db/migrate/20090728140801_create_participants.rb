@@ -3,9 +3,11 @@ class CreateParticipants < ActiveRecord::Migration
     create_table :participants do |t|
       t.string :email, :null => false
       t.string :name,  :null => false
+      t.string :location
       t.string :lighthouse_id
       t.string :github_id
-      
+      t.integer :score
+
       t.string :crypted_password,    :null => false
       t.string :password_salt,       :null => false
       t.string :persistence_token,   :null => false
