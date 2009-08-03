@@ -8,18 +8,10 @@ class ParticipantsController < ApplicationController
 
   def show
     @participant = Participant.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
   end
 
   def new
     @participant = Participant.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-    end
   end
 
   def edit
@@ -38,26 +30,18 @@ class ParticipantsController < ApplicationController
   end
 
   def update
-
-
-    respond_to do |format|
-      if @participant.update_attributes(params[:participant])
-        flash[:notice] = 'Participant was successfully updated.'
-        format.html { redirect_to(@participant) }
-      else
-        format.html { render :action => "edit" }
-      end
+    if @participant.update_attributes(params[:participant])
+      flash[:notice] = 'Participant was successfully updated.'
+      redirect_to(@participant)
+    else
+      render :action => "edit"
     end
   end
 
   def destroy
     @participant = Participant.find(params[:id])
     @participant.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(participants_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(participants_url)
   end
 
   private

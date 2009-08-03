@@ -8,7 +8,7 @@
 
 <% @participants.each do |participant| %>
   <tr>
-    <td><%=h participant.name %></td>
+    <td><%= link_to(h(participant.name), participant) %></td>
     <td><%= participant.score %></td>
   </tr>
 <% end %>
