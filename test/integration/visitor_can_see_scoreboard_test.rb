@@ -1,0 +1,18 @@
+require File.join(File.dirname(__FILE__), '..', 'test_helper')
+
+class VisitorCanSeeScoreboardTest < ActionController::IntegrationTest
+  context 'a visitor to the site' do
+    setup { @participant = Factory(:participant) }
+
+    should 'see a list of Participants' do
+      visits root_path
+      assert_contain 'John McClane'
+    end
+
+    should "be able to see Participant's Actions" do
+      visits root_path
+      click_link 'John McClane'
+      assert_equal participant_path(@participant), path
+    end
+  end
+end
