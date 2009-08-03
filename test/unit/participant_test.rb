@@ -7,7 +7,7 @@ class ParticipantTest < ActiveSupport::TestCase
 
   should_have_many :actions
 
-  context '#find_author' do
+  context '.find_author' do
     setup { Factory(:participant, :lighthouse_id => 'cowboy', :github_id => 'baldie') }
     
     should 'find the participant by #name' do

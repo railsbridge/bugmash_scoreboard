@@ -16,7 +16,7 @@ class ActionTest < ActiveSupport::TestCase
   should_validate_presence_of :lighthouse_id
   should_validate_numericality_of :lighthouse_id, :point_value
   
-  context '##new_ticket?' do
+  context '.new_ticket?' do
     should 'be true if the action is for a new ticket' do
       assert Action.new_ticket?(2999)
     end
@@ -27,7 +27,7 @@ class ActionTest < ActiveSupport::TestCase
     end
   end
 
-  context '##up_or_down_vote?' do
+  context '.up_or_down_vote?' do
     should 'detect an up vote' do
       assert Action.up_or_down_vote?('I give this a +1')
     end
@@ -41,7 +41,7 @@ class ActionTest < ActiveSupport::TestCase
     end
   end
   
-  context '##extract_ticket_id' do
+  context '.extract_ticket_id' do
     should 'pull out the Lighthouse ticket id from title' do
       assert_equal 3000, Action.extract_ticket_id(Entry.new('John McClane', 'Do you really think you have a chance against us, Mr. Cowboy? [#3000]', 'Yippee-ki-yay'))
     end
