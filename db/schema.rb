@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20090731163807) do
     t.string   "location"
     t.string   "lighthouse_id"
     t.string   "github_id"
-    t.integer  "score"
+    t.integer  "score",               :default => 0
     t.boolean  "admin",               :default => false
     t.string   "crypted_password",                       :null => false
     t.string   "password_salt",                          :null => false

@@ -6,7 +6,7 @@ class CreateParticipants < ActiveRecord::Migration
       t.string :location
       t.string :lighthouse_id
       t.string :github_id
-      t.integer :score
+      t.integer :score, :default => 0
       t.boolean :admin, :default => false
 
       t.string :crypted_password,    :null => false
