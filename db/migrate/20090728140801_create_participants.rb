@@ -19,12 +19,14 @@ class CreateParticipants < ActiveRecord::Migration
     add_index :participants, :email
     add_index :participants, :persistence_token
     add_index :participants, :perishable_token
+    add_index :participants, [:name, :lighthouse_id]
   end
 
   def self.down
-    remove_index :participants, :email
-    remove_index :participants, :persistence_token
+    remove_index :participants, [:name, :lighthouse_id]
     remove_index :participants, :perishable_token
+    remove_index :participants, :persistence_token
+    remove_index :participants, :email
     drop_table :participants
   end
 end

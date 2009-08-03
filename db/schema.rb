@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20090731163807) do
   end
 
   add_index "participants", ["email"], :name => "index_participants_on_email"
+  add_index "participants", ["name", "lighthouse_id"], :name => "index_participants_on_name_and_lighthouse_id"
   add_index "participants", ["perishable_token"], :name => "index_participants_on_perishable_token"
   add_index "participants", ["persistence_token"], :name => "index_participants_on_persistence_token"
 
