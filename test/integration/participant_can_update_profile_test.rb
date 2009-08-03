@@ -5,18 +5,18 @@ class ParticipantCanUpdateProfileTest < ActionController::IntegrationTest
     setup { sign_participant_in }
     
     should 'be allowed to update own profile' do
-      assert_nil @participant.github_id
-      assert_nil @participant.lighthouse_id
+      assert_equal 'jmmclane', @participant.github_id
+      assert_equal 'jmmclane', @participant.lighthouse_id
 
       visit edit_participant_path(@participant)
 
-      fill_in 'GitHub ID', :with => 'jmcclane'
-      fill_in 'Lighthouse ID', :with => 'jmcclane'
+      fill_in 'GitHub ID', :with => 'cowboy'
+      fill_in 'Lighthouse ID', :with => 'cowboy'
       click_button 'update profile'
       
       @participant.reload
-      assert_equal 'jmcclane', @participant.github_id
-      assert_equal 'jmcclane', @participant.lighthouse_id
+      assert_equal 'cowboy', @participant.github_id
+      assert_equal 'cowboy', @participant.lighthouse_id
     end
 
     should "not be allowed to edit another Participant's profile" do
