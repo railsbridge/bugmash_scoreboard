@@ -4,7 +4,7 @@ class Participant < ActiveRecord::Base
   
   validates_presence_of :name
 
-  def self.find_by_author(author)
-    first(:conditions => ['name = :author OR lighthouse_id = :author', {:author => author}])
+  def self.find_author(author)
+    first(:conditions => ['name = :author OR lighthouse_id = :author OR github_id = :author', {:author => author}])
   end
 end

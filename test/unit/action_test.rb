@@ -59,7 +59,6 @@ class ActionTest < ActiveSupport::TestCase
 
     context 'for a new ticket' do
       should 'award correct point value for a new Lighthouse ticket' do
-
         Action.process_entries([Entry.new(@participant.name, 'Do you really think you have a chance against us, Mr. Cowboy? [#3000]', 'Yippee-ki-yay')])
         action = Action.last
         assert_equal 50, action.point_value
@@ -88,15 +87,9 @@ class ActionTest < ActiveSupport::TestCase
       assert_equal 1000, Action.last.point_value
     end
 
-    context 'for up or down vote' do
-      setup do 
-        @entry = Entry.new(@participant.name, 'ActiveRecord needs more cowbell! [#2999]', '+1 for cowbell')
-      end
-      
-      should 'award 25 points' do
-        Action.process_entries([@entry])
-        assert_equal 25, Action.last.point_value
-      end
+    should 'award 25 points for up or down vote' do
+      Action.process_entries([Entry.new(@participant.name, 'ActiveRecord needs more cowbell! [#2999]', '+1 for cowbell')])
+      assert_equal 25, Action.last.point_value
     end
   end
 end

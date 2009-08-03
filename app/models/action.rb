@@ -29,7 +29,7 @@ class Action < ActiveRecord::Base
 
   def self.process_entries(entries)
     entries.each do |entry|
-      participant = Participant.find_by_author(entry.author)
+      participant = Participant.find_author(entry.author)
       ticket_id = extract_ticket_id(entry)
 
       if participant && !ticket_id.zero?
