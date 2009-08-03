@@ -7,6 +7,8 @@ class ParticipantTest < ActiveSupport::TestCase
 
   should_have_many :actions
 
+  should_not_allow_mass_assignment_of :admin
+
   context '.find_author' do
     setup { Factory(:participant, :lighthouse_id => 'cowboy', :github_id => 'baldie') }
     

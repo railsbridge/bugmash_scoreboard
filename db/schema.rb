@@ -28,17 +28,18 @@ ActiveRecord::Schema.define(:version => 20090731163807) do
   end
 
   create_table "participants", :force => true do |t|
-    t.string   "email",               :null => false
-    t.string   "name",                :null => false
+    t.string   "email",                                  :null => false
+    t.string   "name",                                   :null => false
     t.string   "location"
     t.string   "lighthouse_id"
     t.string   "github_id"
     t.integer  "score"
-    t.string   "crypted_password",    :null => false
-    t.string   "password_salt",       :null => false
-    t.string   "persistence_token",   :null => false
-    t.string   "single_access_token", :null => false
-    t.string   "perishable_token",    :null => false
+    t.boolean  "admin",               :default => false
+    t.string   "crypted_password",                       :null => false
+    t.string   "password_salt",                          :null => false
+    t.string   "persistence_token",                      :null => false
+    t.string   "single_access_token",                    :null => false
+    t.string   "perishable_token",                       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
