@@ -2,7 +2,7 @@ require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class NewParticipantSignUpTest < ActionController::IntegrationTest
   context 'a new Participant' do
-    should 'be able to sign up' do
+    should_eventually 'be able to sign up' do
       visit signup_path
 
       fill_in 'Email', :with => 'larrybird@frenchlick.com'
