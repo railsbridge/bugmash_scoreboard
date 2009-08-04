@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090731163807) do
+ActiveRecord::Schema.define(:version => 20090804181706) do
 
   create_table "actions", :force => true do |t|
     t.integer  "participant_id"
@@ -40,5 +40,12 @@ ActiveRecord::Schema.define(:version => 20090731163807) do
 
   add_index "participants", ["active"], :name => "index_participants_on_active"
   add_index "participants", ["name", "lighthouse_id"], :name => "index_participants_on_name_and_lighthouse_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "crypted_password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
