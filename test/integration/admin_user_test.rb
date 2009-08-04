@@ -1,6 +1,6 @@
 require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
-class AdminToolsTest < ActionController::IntegrationTest
+class AdminUserTest < ActionController::IntegrationTest
   context 'An administrator' do
     setup { sign_user_in }
   

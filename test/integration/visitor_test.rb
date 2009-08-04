@@ -1,7 +1,7 @@
 require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
-class VisitorCanSeeScoreboardTest < ActionController::IntegrationTest
-  context 'a visitor to the site' do
+class VisitorTest < ActionController::IntegrationTest
+  context 'A visitor to the site' do
     setup { @participant = Factory(:participant) }
 
     should 'see a list of Participants' do
