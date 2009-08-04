@@ -14,5 +14,11 @@ class VisitorTest < ActionController::IntegrationTest
       click_link 'John McClane'
       assert_equal participant_path(@participant), path
     end
+
+    should 'not be able to edit a Participant' do
+      visit edit_participant_path(@participant)
+      assert_equal participants_path, path
+      assert_contain 'Tsk. tsk. tsk. Stop being naughty.'
+    end
   end
 end

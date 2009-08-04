@@ -1,4 +1,6 @@
 class ParticipantsController < ApplicationController
+  before_filter :login_required, :only => [:edit, :update, :delete]
+
   def index
     @participants = Participant.all
   end
@@ -40,15 +42,5 @@ class ParticipantsController < ApplicationController
     @participant = Participant.find(params[:id])
     @participant.destroy
     redirect_to(participants_url)
-  end
-
-  private
-
-  def require_profile_owner
-
-    unless current_user == @participant
-      flash[:error] = 'Tsk, tsk, tsk. You can only edit your own profile.'
-      redirect_to edit_participant_path(current_user)
-    end
   end
 end
