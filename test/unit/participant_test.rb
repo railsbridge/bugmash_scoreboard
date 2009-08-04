@@ -11,15 +11,23 @@ class ParticipantTest < ActiveSupport::TestCase
     setup { Factory(:participant, :lighthouse_id => 'cowboy', :github_id => 'baldie') }
     
     should 'find the participant by #name' do
-      assert Participant.find_author('John McClane')
+      assert Participant.find_or_create('John McClane')
+      assert_equal 1, Participant.count
     end
 
     should 'find the participant by #lighthouse_id' do
-      assert Participant.find_author('cowboy')
+      assert Participant.find_or_create('cowboy')
+      assert_equal 1, Participant.count
     end
 
     should 'find the participant by #github_id' do
-      assert Participant.find_author('baldie')
+      assert Participant.find_or_create('baldie')
+      assert_equal 1, Participant.count
+    end
+
+    should 'create new participant if not found' do
+      assert Participant.find_or_create('Bruce Dickenson')
+      assert_equal 2, Participant.count
     end
   end
 end

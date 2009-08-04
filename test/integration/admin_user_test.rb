@@ -17,7 +17,6 @@ class AdminUserTest < ActionController::IntegrationTest
     
     should_eventually 'be able to adjust a Participants score' do
     
-    
     end
   end
 end
