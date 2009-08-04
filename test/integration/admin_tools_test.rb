@@ -2,21 +2,19 @@ require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class AdminToolsTest < ActionController::IntegrationTest
   context 'An administrator' do
-    setup do
-      @user = Factory(:user)
-    end
+    setup { sign_user_in }
   
     should 'be able to sign in' do
-      visit signin_path
-
-      fill_in :email, :with => @user.email
-      fill_in :password, :with => 'secret'
-      click_button 'sign in'
-
+      assert_contain 'Sign in successful.'
       assert_equal root_path, path
     end
-
-    should 'be able to adjust a Participants score' do
+    
+    should 'be able to sign out' do
+      click_link 'sign out'
+      assert_contain 'You have signed out.'
+    end
+    
+    should_eventually 'be able to adjust a Participants score' do
     
     
     end

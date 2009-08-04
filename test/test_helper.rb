@@ -13,4 +13,13 @@ class ActiveSupport::TestCase
 
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false
+
+  def sign_user_in
+    @user = Factory(:user) unless defined?(@user)
+
+    visit signin_path
+    fill_in :email, :with => @user.email
+    fill_in :password, :with => 'secret'
+    click_button 'sign in'
+  end
 end
