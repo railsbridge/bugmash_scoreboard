@@ -28,27 +28,17 @@ ActiveRecord::Schema.define(:version => 20090731163807) do
   end
 
   create_table "participants", :force => true do |t|
-    t.string   "email",                                  :null => false
-    t.string   "name",                                   :null => false
+    t.string   "name",                            :null => false
     t.string   "location"
     t.string   "lighthouse_id"
     t.string   "github_id"
-    t.integer  "score",               :default => 0
-    t.boolean  "admin",               :default => false
-    t.boolean  "active",              :default => true
-    t.string   "crypted_password",                       :null => false
-    t.string   "password_salt",                          :null => false
-    t.string   "persistence_token",                      :null => false
-    t.string   "single_access_token",                    :null => false
-    t.string   "perishable_token",                       :null => false
+    t.integer  "score",         :default => 0
+    t.boolean  "active",        :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "participants", ["active"], :name => "index_participants_on_active"
-  add_index "participants", ["email"], :name => "index_participants_on_email"
   add_index "participants", ["name", "lighthouse_id"], :name => "index_participants_on_name_and_lighthouse_id"
-  add_index "participants", ["perishable_token"], :name => "index_participants_on_perishable_token"
-  add_index "participants", ["persistence_token"], :name => "index_participants_on_persistence_token"
 
 end

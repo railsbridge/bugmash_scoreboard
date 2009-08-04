@@ -13,12 +13,4 @@ class ActiveSupport::TestCase
 
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false
-
-  def sign_participant_in
-    @participant = Factory(:participant) unless defined?(@participant)
-    visit signin_path
-    fill_in 'Email', :with => @participant.email
-    fill_in 'Password', :with => 'sekrit'
-    click_button 'sign in'
-  end
 end

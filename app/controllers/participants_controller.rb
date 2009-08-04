@@ -1,7 +1,4 @@
 class ParticipantsController < ApplicationController
-  before_filter :require_user, :only => [:edit, :update, :destroy]
-  before_filter :require_profile_owner, :only => [:edit, :update, :destroy]
-
   def index
     @participants = Participant.all
   end
@@ -15,7 +12,7 @@ class ParticipantsController < ApplicationController
   end
 
   def edit
-    render
+    @participant = Participant.find(params[:id])
   end
 
   def create
@@ -30,6 +27,7 @@ class ParticipantsController < ApplicationController
   end
 
   def update
+    @participant = Participant.find(params[:id])
     if @participant.update_attributes(params[:participant])
       flash[:notice] = 'Participant was successfully updated.'
       redirect_to(@participant)
@@ -47,7 +45,7 @@ class ParticipantsController < ApplicationController
   private
 
   def require_profile_owner
-    @participant = Participant.find(params[:id])
+
     unless current_user == @participant
       flash[:error] = 'Tsk, tsk, tsk. You can only edit your own profile.'
       redirect_to edit_participant_path(current_user)
