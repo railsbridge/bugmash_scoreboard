@@ -63,11 +63,6 @@ class ActionTest < ActiveSupport::TestCase
         action = Action.last
         assert_equal 50, action.point_value
       end
-
-      should 'not process the entry if the author is not registered' do
-        Action.process_entries([Entry.new('The Bruce Dickinson', 'I have a fever... [#3001]', 'More cowbell.')])
-        assert_equal 1, Action.count
-      end
     end
     
     should 'award 50 points for verified issue' do

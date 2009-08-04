@@ -29,10 +29,9 @@ class Action < ActiveRecord::Base
 
   def self.process_entries(entries)
     entries.each do |entry|
-      participant = Participant.find_author(entry.author)
       ticket_id = extract_ticket_id(entry)
-
-      if participant && !ticket_id.zero?
+      unless ticket_id.zero?
+        participant = Participant.find_or_create(entry.author)
         action = participant.actions.new(:lighthouse_id => ticket_id)
         running_total = 0
         
