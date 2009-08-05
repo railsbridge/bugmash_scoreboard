@@ -1,5 +1,5 @@
 class Participant < ActiveRecord::Base
-  has_many :actions
+  has_many :contributions
   
   validates_presence_of :name
 

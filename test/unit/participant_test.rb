@@ -5,7 +5,7 @@ class ParticipantTest < ActiveSupport::TestCase
 
   should_validate_presence_of :name
 
-  should_have_many :actions
+  should_have_many :contributions
 
   context '.find_author' do
     setup { Factory(:participant, :lighthouse_id => 'cowboy', :github_id => 'baldie') }

@@ -11,7 +11,7 @@
 
 ActiveRecord::Schema.define(:version => 20090804232454) do
 
-  create_table "actions", :force => true do |t|
+  create_table "contributions", :force => true do |t|
     t.integer  "participant_id"
     t.integer  "lighthouse_id"
     t.integer  "point_value"

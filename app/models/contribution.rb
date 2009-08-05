@@ -1,11 +1,11 @@
-class Action < ActiveRecord::Base
+class Contribution < ActiveRecord::Base
   belongs_to :participant
 
   validates_presence_of :lighthouse_id
   validates_numericality_of [:lighthouse_id, :point_value]
 
   def self.new_ticket?(ticket_number)
-    Action.count == 0 || ticket_number > Action.maximum(:lighthouse_id)
+    Contribution.count == 0 || ticket_number > Contribution.maximum(:lighthouse_id)
   end
 
   def self.up_or_down_vote?(content)
@@ -32,16 +32,16 @@ class Action < ActiveRecord::Base
       ticket_id = extract_ticket_id(entry)
       unless ticket_id.zero?
         participant = Participant.find_or_create(entry.author)
-        action = participant.actions.new(:lighthouse_id => ticket_id)
+        contribution = participant.contributions.new(:lighthouse_id => ticket_id)
         running_total = 0
         
-        running_total += 50 if new_ticket?(action.lighthouse_id)
+        running_total += 50 if new_ticket?(contribution.lighthouse_id)
         running_total += 25 if up_or_down_vote?(entry.content)
         running_total += 50 if checked?(entry.content)
         running_total += 1000 if changeset?(entry.content)
 
-        action.point_value = running_total
-        action.save
+        contribution.point_value = running_total
+        contribution.save
       end
     end
   end

@@ -1,6 +1,6 @@
-class CreateActions < ActiveRecord::Migration
+class CreateContributions < ActiveRecord::Migration
   def self.up
-    create_table :actions do |t|
+    create_table :contributions do |t|
       t.belongs_to :participant
       t.integer :lighthouse_id
       t.integer :point_value
@@ -10,6 +10,6 @@ class CreateActions < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :actions
+    drop_table :contributions
   end
 end
