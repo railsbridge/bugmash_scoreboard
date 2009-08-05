@@ -1,1 +1,2 @@
 rack -v=1.0
+pauldix-feedzirra --version 0.0.16 --source http://gems.github.com
