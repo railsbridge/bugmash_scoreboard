@@ -6,6 +6,10 @@ Rails::Initializer.run do |config|
   config.gem 'vigetlabs-simplest_auth', :lib => 'simplest_auth',
                                         :source => 'http://gems.github.com'
 
+  config.gem 'hardbap-feedzirra', :lib => 'feedzirra', 
+                                  :source => 'http://gems.github.com',
+                                  :version => '~> 0.0.16'
+
   config.gem 'mislav-will_paginate', :lib => 'will_paginate',
                                      :source => 'http://gems.github.com',
                                      :version => '~> 2.3.11'
