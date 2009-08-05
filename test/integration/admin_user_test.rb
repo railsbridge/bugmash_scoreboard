@@ -28,17 +28,26 @@ class AdminUserTest < ActionController::IntegrationTest
       assert_equal 100, participant.score
     end
 
-    context 'working with Actions' do
+    context 'working with Contributions' do
       setup { @participant = Factory(:participant) }
 
       should 'be able to create a new one' do
         visit new_contribution_path
-
         fill_in 'Lighthouse ID', :with => '2000'
         fill_in 'Point Value', :with => '100'
         select 'John McClane', :from => 'Participant'
-        click_button 'Submit'
+        click_button 'Update'
         assert_contain 'Contribution created.'
+        assert_path contributions_path
+      end
+
+      should 'be able to update existing contribution' do
+        contribution = @participant.contributions.create(:lighthouse_id => 2000, :point_value => 25)
+        
+        visit edit_contribution_path(contribution)
+        fill_in 'Point Value', :with => '100'
+        click_button 'Update'
+        assert_contain 'Contribution updated.'
         assert_path contributions_path
       end
     end
