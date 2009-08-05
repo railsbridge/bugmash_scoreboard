@@ -22,4 +22,8 @@ class ActiveSupport::TestCase
     fill_in :password, :with => 'secret'
     click_button 'sign in'
   end
+
+  def assert_path expected_path
+    assert_equal path, expected_path
+  end
 end

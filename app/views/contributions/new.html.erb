@@ -1,0 +1,18 @@
+<% form_for @contribution do |form| %>
+  <p>
+    <%= form.label :lighthouse_id, 'Lighthouse ID' %>
+    <%= form.text_field :lighthouse_id %>
+  </p>
+  <p>
+    <%= form.label :point_value %>
+    <%= form.text_field :point_value %>
+  </p>
+  <p>
+    <%= form.label :participant_id, 'Participant' %>
+    <%= form.collection_select :participant_id, @participants, :id, :name, {:prompt => true} %>
+  </p>
+  <p>
+    <%= form.submit 'Submit', :name => nil %>
+  </p>
+<% end %>
+
