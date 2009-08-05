@@ -10,6 +10,11 @@ class Feed < ActiveRecord::Base
     end
   end
 
+  def read!
+    read
+    save!
+  end
+  
   protected
 
   def trim_entries
