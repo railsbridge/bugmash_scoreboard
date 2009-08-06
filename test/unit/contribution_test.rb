@@ -56,6 +56,12 @@ class ContributionTest < ActiveSupport::TestCase
       @participant = Factory(:participant)
       Contribution.create!(:lighthouse_id => 2999, :point_value => 25)
     end
+    
+    should 'add the value to Participant#score' do
+      Contribution.process_entries([Entry.new(@participant.name, 'I broke something [#3000]', 'Yippee-ki-yay')])
+      @participant.reload
+      assert_equal 50, @participant.score
+    end
 
     context 'for a new ticket' do
       should 'award correct point value for a new Lighthouse ticket' do

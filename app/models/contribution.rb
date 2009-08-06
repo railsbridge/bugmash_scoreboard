@@ -31,20 +31,22 @@ class Contribution < ActiveRecord::Base
     entries.each do |entry|
       ticket_id = extract_ticket_id(entry)
       unless ticket_id.zero?
-        participant = Participant.find_or_create(entry.author)
-        contribution = participant.contributions.new(:lighthouse_id => ticket_id)
         running_total = 0
         
-        if new_ticket?(contribution.lighthouse_id)
+        if new_ticket?(ticket_id)
           running_total += 50
         else
           running_total += 25 if up_or_down_vote?(entry.content)
           running_total += 50 if checked?(entry.content)
           running_total += 1000 if changeset?(entry.content)
         end
-
-        contribution.point_value = running_total
-        contribution.save unless running_total.zero?
+        
+        unless running_total.zero?
+          participant = Participant.find_or_create(entry.author)
+          participant.contributions.create(:lighthouse_id => ticket_id,
+                                           :point_value => running_total)
+          participant.increment!(:score, running_total)
+        end        
       end
     end
   end
