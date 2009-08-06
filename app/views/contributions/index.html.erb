@@ -1,0 +1,13 @@
+<table>
+  <tr>
+    <th>Participant</th>
+    <th>Lighthouse Ticket</th>
+  </tr>
+  <% @contributions.each do |contribution| %>
+    <tr>
+      <td><%= link_to contribution.participant.name, contribution.participant %></td>
+      <td><%= link_to contribution.lighthouse_id, contribution %></td>
+      <td><%= contribution.point_value %></td>
+    </tr>
+  <% end %>
+</table>

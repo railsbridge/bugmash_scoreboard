@@ -55,7 +55,8 @@ class AdminUserTest < ActionController::IntegrationTest
         contribution = @participant.contributions.create(:lighthouse_id => 2000, :point_value => 25)
         
         visit contributions_path
-        assert_contain 'John McClane'
+        assert_have_selector :a, :href => participant_path(@participant)
+        assert_have_selector :a, :href => contribution_path(contribution)
       end
     end
   end
