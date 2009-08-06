@@ -2,7 +2,7 @@ class ContributionsController < ApplicationController
   before_filter :login_required
   
   def index
-    @contributions = Contribution.all(:order => 'updated_at DESC')
+    @contributions = Contribution.all(:order => 'updated_at DESC', :include => :participant)
   end
   
   def new

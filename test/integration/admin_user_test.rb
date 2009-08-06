@@ -50,6 +50,13 @@ class AdminUserTest < ActionController::IntegrationTest
         assert_contain 'Contribution updated.'
         assert_path contributions_path
       end
+
+      should 'be able to see the list of contributions' do
+        contribution = @participant.contributions.create(:lighthouse_id => 2000, :point_value => 25)
+        
+        visit contributions_path
+        assert_contain 'John McClane'
+      end
     end
   end
 end

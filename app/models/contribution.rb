@@ -9,7 +9,7 @@ class Contribution < ActiveRecord::Base
   end
 
   def self.up_or_down_vote?(content)
-    content[/[+|-]1/]
+    content[/\s[+|-]1/]
   end
 
   def self.checked?(content)
@@ -17,7 +17,7 @@ class Contribution < ActiveRecord::Base
   end
   
   def self.changeset?(content)
-    content[/\[\#(\d{3,}) state:resolved\]/]
+    content[/\[\#(\d{3,}) state:(resolved|committed)\]/]
   end
 
   def self.extract_ticket_id(entry)
@@ -35,13 +35,16 @@ class Contribution < ActiveRecord::Base
         contribution = participant.contributions.new(:lighthouse_id => ticket_id)
         running_total = 0
         
-        running_total += 50 if new_ticket?(contribution.lighthouse_id)
-        running_total += 25 if up_or_down_vote?(entry.content)
-        running_total += 50 if checked?(entry.content)
-        running_total += 1000 if changeset?(entry.content)
+        if new_ticket?(contribution.lighthouse_id)
+          running_total += 50
+        else
+          running_total += 25 if up_or_down_vote?(entry.content)
+          running_total += 50 if checked?(entry.content)
+          running_total += 1000 if changeset?(entry.content)
+        end
 
         contribution.point_value = running_total
-        contribution.save
+        contribution.save unless running_total.zero?
       end
     end
   end

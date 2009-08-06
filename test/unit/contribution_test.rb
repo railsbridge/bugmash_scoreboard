@@ -22,7 +22,7 @@ class ContributionTest < ActiveSupport::TestCase
     end
 
     should 'be false if we have an action with a higher lighthouse id' do
-      Action.create!(:lighthouse_id => 2999, :point_value => 25)
+      Contribution.create!(:lighthouse_id => 2999, :point_value => 25)
       assert ! Contribution.new_ticket?(2999)
     end
   end
@@ -83,7 +83,7 @@ class ContributionTest < ActiveSupport::TestCase
     end
 
     should 'award 25 points for up or down vote' do
-      Action.process_entries([Entry.new(@participant.name, 'ActiveRecord needs more cowbell! [#2999]', '+1 for cowbell')])
+      Contribution.process_entries([Entry.new(@participant.name, 'ActiveRecord needs more cowbell! [#2999]', '+1 for cowbell')])
       assert_equal 25, Contribution.last.point_value
     end
   end
