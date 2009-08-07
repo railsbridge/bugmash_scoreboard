@@ -6,7 +6,7 @@ class ParticipantsController < ApplicationController
   end
 
   def show
-    @participant = Participant.find(params[:id])
+    @participant = Participant.find(params[:id], :include => :contributions)
   end
 
   def new

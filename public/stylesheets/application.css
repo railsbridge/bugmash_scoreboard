@@ -1,0 +1,44 @@
+#header {
+  padding: 20px;
+  background: #ccc;
+}
+
+#content {
+  float: left;
+  width: 66%;
+  margin-right: 6%;
+}
+
+#sidebar {
+
+}
+
+#footer {
+  clear: both;
+  padding: 20px;
+  background: #eee;
+}
+
+#header h2 {
+  padding: 0;
+  margin: 0;
+  width: 50%;
+}
+
+#nav {
+  float: right;
+  margin: 0;
+  border-bottom: 1px solid #696;
+}
+
+#nav li {
+  list-style: none;
+  display: inline;
+}
+
+#nav a {
+  line-height: 14px;
+  font-weight: bold;
+  margin: 0 10px 4px 10px;
+  text-decoration: none;
+}

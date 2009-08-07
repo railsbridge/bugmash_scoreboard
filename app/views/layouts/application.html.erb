@@ -9,19 +9,28 @@
     <!--[if IE]>
         <link rel="stylesheet" href="/stylesheets/ie.css" type="text/css" media="screen">
     <![endif]-->
+    <%= stylesheet_link_tag 'application' %>
   </head>
   <body>
-    <p style="color: green">
-      <%= flash[:notice] %>
-    </p>
-    
-    <% if logged_in? -%>
-      <ul>
-        <li><%= link_to 'sign out', signout_path, :method => :delete %></li>
+    <div id="header">
+      <h2>August 2009 BugMash participants</h2>
+      <ul id="nav">
+        <li><%= link_to 'home', root_path %></li>
+        <li><%= link_to 'problem?', new_issue_path %></li>
+        <%= content_tag(:li, link_to('sign out', signout_path, :method => :delete)) if logged_in? %>
       </ul>
-    <% end %>
+    </div>
     
-    <%= yield %>
+    <div id="content">
+      <%= yield %>
+    </div>
 
+    <div id="sidebar">
+      hello
+    </div>
+
+    <p id="footer">
+      &copy; 2009 <a href="http://railsbridge.org">RailsBridge, Inc</a>. All Rights Reserved. | <a href="http://rubyonrails.org">Ruby on Rails</a> is a trademark of David Heinemeier Hansson
+    </p>
   </body>
 </html>

@@ -1,5 +1,14 @@
-<p>
-  <b>Name:</b>
-  <%=h @participant.name %>
-</p>
+<h3><%= h @participant.name %></h3>
+<table>
+  <tr>
+    <th>Lighthouse Ticket</th>
+    <th>Point Value</th>
+  </tr>
 
+  <% @participant.contributions.each do |contribution| %>
+    <tr>
+      <td><%= link_to contribution.lighthouse_id, "https://rails.lighthouseapp.com/projects/8994/tickets/#{contribution.lighthouse_id}", :target => '_blank' %></td>
+      <td><%= contribution.point_value %></td>
+    </tr>
+  <% end %>
+</table>
