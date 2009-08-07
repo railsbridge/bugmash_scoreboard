@@ -1,19 +1,19 @@
 <%= form.error_messages %>
   
 <div>
-  <%= form.label :contributor_name, 'Your name' %>
+  <%= form.label :contributor_name, 'Your name', :class => 'required' %><br />
   <%= form.text_field :contributor_name %>
 </div>
 <div>
-  <%= form.label :email %>
+  <%= form.label :email %> <br />
   <%= form.text_field :email %>
 </div>
 <div>
-  <%= form.label :lighthouse_id, 'Lighthouse Number' %>
+  <%= form.label :lighthouse_id, 'Lighthouse Number' %><br />
   <%= form.text_field :lighthouse_id %>
 </div>
 <div>
-  <%= form.label :details %>
+  <%= form.label :details, 'Details', :class => 'required' %><br />
   <%= form.text_area :details %>
 </div>
 <% if logged_in? %>
