@@ -25,6 +25,7 @@
         <li><%= link_to 'problem?', new_issue_path %></li>
         <% if logged_in? %>
           <li><%= link_to 'contributions', contributions_path %></li>
+          <li><%= link_to 'issues', issues_path %></li>
           <li><%= link_to 'leave', signout_path, :method => :delete %></li>
         <% end %>
       </ul>

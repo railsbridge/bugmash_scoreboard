@@ -1,2 +1,15 @@
-<h1>Issues#index</h1>
-<p>Find me in app/views/issues/index.html.erb</p>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Lighthouse #</th>
+    <th>Details</th>
+  </tr>
+  
+  <% @issues.each do |issue| %>
+    <tr>
+      <td><%= issue.contributor_name %></td>
+      <td><%= issue.lighthouse_id %></td>
+      <td><%= truncate(issue.details) %></td>
+    </tr>
+  <% end %>
+</table>
