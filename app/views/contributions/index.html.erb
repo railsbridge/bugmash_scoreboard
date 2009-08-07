@@ -6,7 +6,7 @@
   <% @contributions.each do |contribution| %>
     <tr>
       <td><%= link_to contribution.participant.name, contribution.participant %></td>
-      <td><%= link_to contribution.lighthouse_id, contribution %></td>
+      <td><%= link_to contribution.lighthouse_id, edit_contribution_path(contribution) %></td>
       <td><%= contribution.point_value %></td>
     </tr>
   <% end %>

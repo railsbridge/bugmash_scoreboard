@@ -10,7 +10,7 @@ class AdminUserTest < ActionController::IntegrationTest
     end
     
     should 'be able to sign out' do
-      click_link 'sign out'
+      click_link 'leave'
       assert_contain 'You have signed out.'
       assert_equal root_path, path
     end
@@ -69,7 +69,7 @@ class AdminUserTest < ActionController::IntegrationTest
         
         visit contributions_path
         assert_have_selector :a, :href => participant_path(@participant)
-        assert_have_selector :a, :href => contribution_path(contribution)
+        assert_have_selector :a, :href => edit_contribution_path(contribution)
       end
     end
   end

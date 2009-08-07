@@ -23,7 +23,10 @@
       <ul id="nav">
         <li><%= link_to 'home', root_path %></li>
         <li><%= link_to 'problem?', new_issue_path %></li>
-        <%= content_tag(:li, link_to('sign out', signout_path, :method => :delete)) if logged_in? %>
+        <% if logged_in? %>
+          <li><%= link_to 'contributions', contributions_path %></li>
+          <li><%= link_to 'leave', signout_path, :method => :delete %></li>
+        <% end %>
       </ul>
     </div>
     

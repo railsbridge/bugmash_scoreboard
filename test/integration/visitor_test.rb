@@ -30,7 +30,7 @@ class VisitorTest < ActionController::IntegrationTest
     should 'be able to report a scoring issue' do
       assert Issue.count.zero?
       visit root_path
-      click_link 'missing contribution'
+      click_link 'problem?'
       assert_path new_issue_path
       assert_have_no_selector :input, :type => 'checkbox'
       fill_in 'Your name', :with => 'John McClane'
