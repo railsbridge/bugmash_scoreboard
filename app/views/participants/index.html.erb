@@ -1,3 +1,14 @@
+<% content_for :sidebar do %>
+  <p>
+    Recent Activity:
+  </p>
+  <ul>
+    <% @latest_contributions.each do |contribution| %>
+      <li><%= link_to(contribution.participant.name, contribution.participant) %> [<%= contribution.point_value %>] <em><%= time_ago_in_words(contribution.created_at)  %></em></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <table>
   <tr>
     <th>Name</th>

@@ -16,7 +16,12 @@ body {
 }
 
 #sidebar {
+  margin-top: 20px;
+}
 
+#sidebar li {
+  list-style: none;
+  padding-bottom: 5px;
 }
 
 #footer {
@@ -60,7 +65,7 @@ body {
 }
 
 .flash_success {
-
+ 
 }
 
 .flash_error {
@@ -72,3 +77,4 @@ body {
   line-height: 1.833;
   float: right;
 }
+

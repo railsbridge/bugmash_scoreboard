@@ -4,6 +4,8 @@ class Contribution < ActiveRecord::Base
   validates_presence_of :lighthouse_id
   validates_numericality_of [:lighthouse_id, :point_value]
 
+  named_scope :last_five, {:limit => 5, :order => 'created_at DESC', :include => :participant}
+
   def self.new_ticket?(ticket_number)
     Contribution.count == 0 || ticket_number > Contribution.maximum(:lighthouse_id)
   end
