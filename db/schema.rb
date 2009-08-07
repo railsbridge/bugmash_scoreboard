@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090804232454) do
+ActiveRecord::Schema.define(:version => 20090806181848) do
 
   create_table "contributions", :force => true do |t|
     t.integer  "participant_id"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(:version => 20090804232454) do
     t.string   "name"
     t.text     "reader"
     t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "issues", :force => true do |t|
+    t.string   "contributor_name"
+    t.string   "email"
+    t.integer  "lighthouse_id"
+    t.text     "details"
+    t.boolean  "fixed",            :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

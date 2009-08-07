@@ -27,6 +27,19 @@ class AdminUserTest < ActionController::IntegrationTest
       participant.reload
       assert_equal 100, participant.score
     end
+    
+    context 'working with issues' do
+      setup { @issue = Factory(:issue)  }
+      
+      should 'be able to mark an Issue as fixed' do
+        visit edit_issue_path(@issue)
+        check 'issue_fixed'
+        click_button 'Send'
+        assert_path issues_path
+        @issue.reload
+        assert @issue.fixed?
+      end
+    end
 
     context 'working with Contributions' do
       setup { @participant = Factory(:participant) }

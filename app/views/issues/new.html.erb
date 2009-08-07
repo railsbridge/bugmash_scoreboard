@@ -1,0 +1,7 @@
+<h3>Report a problem</h3>
+<p>
+  Let's know if we've botched a score or didn't give you credit for something. The more info you give use the easier it will be for us to help you.
+</p>
+<% form_for @issue do |form| %>
+  <%= render :partial => 'form', :locals => {:form => form} %>  
+<% end %>
