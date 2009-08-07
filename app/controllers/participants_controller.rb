@@ -4,6 +4,8 @@ class ParticipantsController < ApplicationController
   def index
     @participants = Participant.top_scorers.paginate(:page => params[:page], :per_page => 25)
     @latest_contributions = Contribution.last_five
+    # we're using the seeded contribution as our timestamp
+    @time_stamp = Contribution.first.updated_at 
   end
 
   def show

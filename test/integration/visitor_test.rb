@@ -2,7 +2,10 @@ require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class VisitorTest < ActionController::IntegrationTest
   context 'A visitor to the site' do
-    setup { @participant = Factory(:participant) }
+    setup do
+      stub(Contribution).first.stub!.updated_at {Time.now}
+      @participant = Factory(:participant)
+    end
 
     should 'see a list of Participants' do
       visit root_path

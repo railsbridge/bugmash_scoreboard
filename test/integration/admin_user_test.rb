@@ -2,7 +2,10 @@ require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class AdminUserTest < ActionController::IntegrationTest
   context 'An administrator' do
-    setup { sign_user_in }
+    setup do
+      stub(Contribution).first.stub!.updated_at {Time.now}
+      sign_user_in
+    end
   
     should 'be able to sign in' do
       assert_contain 'You are now signed in.'
