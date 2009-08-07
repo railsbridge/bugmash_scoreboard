@@ -9,7 +9,7 @@ class Contribution < ActiveRecord::Base
   end
 
   def self.up_or_down_vote?(content)
-    content[/\s[+|-]1/]
+    content[/[+|-]1/]
   end
 
   def self.checked?(content)
