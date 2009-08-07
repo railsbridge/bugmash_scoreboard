@@ -12,8 +12,14 @@
     <%= stylesheet_link_tag 'application' %>
   </head>
   <body>
+    <% if flash.any? %>
+      <% flash.each do |key, value| %>
+        <%= content_tag :div, value, :class => "flash flash_#{key}" %>
+      <% end %>
+    <% end %>
+    
     <div id="header">
-      <h2>August 2009 BugMash participants</h2>
+      <h2>August 2009 BugMash</h2>
       <ul id="nav">
         <li><%= link_to 'home', root_path %></li>
         <li><%= link_to 'problem?', new_issue_path %></li>
@@ -26,7 +32,7 @@
     </div>
 
     <div id="sidebar">
-      hello
+      <%= yield :sidebar %>
     </div>
 
     <p id="footer">

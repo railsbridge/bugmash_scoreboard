@@ -1,6 +1,12 @@
+body {
+  font-family: Georgia, Times, serif;
+  line-height: 1.5em;
+  color: #333;
+  background: #fff;
+}
+
 #header {
   padding: 20px;
-  background: #ccc;
 }
 
 #content {
@@ -16,19 +22,20 @@
 #footer {
   clear: both;
   padding: 20px;
-  background: #eee;
 }
 
 #header h2 {
   padding: 0;
   margin: 0;
   width: 50%;
+  letter-spacing: 2px;
+  font-variant: small-caps;
 }
 
 #nav {
   float: right;
   margin: 0;
-  border-bottom: 1px solid #696;
+  border-bottom: 1px solid #BE0726;
 }
 
 #nav li {
@@ -41,4 +48,21 @@
   font-weight: bold;
   margin: 0 10px 4px 10px;
   text-decoration: none;
+}
+
+.flash {
+  font-size: 1.8em;
+  text-align: center;
+  padding: 20px 0;
+  letter-spacing: .1em;
+  font-variant: small-caps;
+  text-transform: lowercase;
+}
+
+.flash_success {
+
+}
+
+.flash_error {
+  color: #BE0726;
 }
