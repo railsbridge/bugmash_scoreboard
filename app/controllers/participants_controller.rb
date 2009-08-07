@@ -2,7 +2,7 @@ class ParticipantsController < ApplicationController
   before_filter :login_required, :only => [:edit, :update, :delete]
 
   def index
-    @participants = Participant.all
+    @participants = Participant.top_scorers.paginate :page => params[:page], :per_page => 5
   end
 
   def show

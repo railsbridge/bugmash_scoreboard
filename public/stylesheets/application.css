@@ -66,3 +66,9 @@ body {
 .flash_error {
   color: #BE0726;
 }
+
+.pagination {
+  font-size: 1.2em;
+  line-height: 1.833;
+  float: right;
+}

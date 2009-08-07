@@ -6,4 +6,6 @@ class Participant < ActiveRecord::Base
   def self.find_or_create(author)
     first(:conditions => ['name = :author OR lighthouse_id = :author OR github_id = :author', {:author => author}]) || create(:name => author)
   end
+
+  named_scope :top_scorers, :order => 'score DESC'
 end
