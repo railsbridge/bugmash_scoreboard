@@ -29,11 +29,11 @@ body {
   padding: 30px 200px;
 }
 
-#header h2 {
+#header h1 {
   padding: 0;
   margin: 0;
   width: 50%;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   font-variant: small-caps;
 }
 
@@ -95,4 +95,12 @@ form .required {
   font-size: 1.4em;
   margin: 10px 30px;
   text-align: justify;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+tr, td {
+  padding: 10px;
 }

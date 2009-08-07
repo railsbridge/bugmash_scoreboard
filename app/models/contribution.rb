@@ -22,6 +22,10 @@ class Contribution < ActiveRecord::Base
     content[/\[\#(\d{3,}) state:(resolved|committed)\]/]
   end
 
+  def self.patch?(content)
+    content[/attached a patch/]
+  end
+
   def self.extract_ticket_id(entry)
     pattern = /\[\#(\d{3,}).*\]$/
     entry.title.scan(pattern)
@@ -43,6 +47,8 @@ class Contribution < ActiveRecord::Base
           running_total += 1000 if changeset?(entry.content)
         end
         
+        running_total += 100 if patch?(entry.content)
+
         unless running_total.zero?
           participant = Participant.find_or_create(entry.author)
           participant.contributions.create(:lighthouse_id => ticket_id,

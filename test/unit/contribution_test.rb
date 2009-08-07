@@ -41,6 +41,12 @@ class ContributionTest < ActiveSupport::TestCase
     end
   end
   
+  context '.patch?' do
+    should 'detect a patch' do
+      assert Contribution.patch?("I've attached a patch")
+    end
+  end
+  
   context '.extract_ticket_id' do
     should 'pull out the Lighthouse ticket id from title' do
       assert_equal 3000, Contribution.extract_ticket_id(Entry.new('John McClane', 'Do you really think you have a chance against us, Mr. Cowboy? [#3000]', 'Yippee-ki-yay'))
@@ -83,6 +89,12 @@ class ContributionTest < ActiveSupport::TestCase
       assert_equal 50, Contribution.last.point_value
     end
     
+    should 'award 100 points for a patch' do
+      Contribution.process_entries([Entry.new(@participant.name, 'More cowbell! [#2999]', "I've attached a patch")])
+
+      assert_equal 100, Contribution.last.point_value
+    end
+
     should 'award 1000 points for a Changeset' do
       Contribution.process_entries([Entry.new(@participant.name, 'Something is broken', 'Ruby 1.9: fix Content-Length for multibyte send_data streaming [#2661 state:resolved]')])
       assert_equal 1000, Contribution.last.point_value
