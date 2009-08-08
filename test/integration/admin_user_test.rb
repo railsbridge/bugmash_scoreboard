@@ -3,7 +3,7 @@ require File.join(File.dirname(__FILE__), '..', 'test_helper')
 class AdminUserTest < ActionController::IntegrationTest
   context 'An administrator' do
     setup do
-      stub(Contribution).first.stub!.updated_at {Time.now}
+      stub(Contribution).dummy.stub!.updated_at {Time.now}
       sign_user_in
     end
   

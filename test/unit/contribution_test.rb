@@ -15,7 +15,8 @@ class ContributionTest < ActiveSupport::TestCase
 
   should_validate_presence_of :lighthouse_id
   should_validate_numericality_of :lighthouse_id, :point_value
-  
+  should_have_named_scope :dummy
+
   context '.new_ticket?' do
     should 'be true if the action is for a new ticket' do
       assert Contribution.new_ticket?(2999)
