@@ -28,7 +28,7 @@ class Contribution < ActiveRecord::Base
   end
 
   def self.extract_ticket_id(entry)
-    pattern = /\[\#(\d{3,}).*\]$/
+    pattern = /\[\#(\d{3,}).*\]/
     entry.title.scan(pattern)
     entry.content.scan(pattern) if $1.nil?
     $1.to_i
