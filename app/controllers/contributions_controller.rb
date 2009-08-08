@@ -2,7 +2,7 @@ class ContributionsController < ApplicationController
   before_filter :login_required
   
   def index
-    @contributions = Contribution.all(:order => 'updated_at DESC', :include => :participant)
+    @contributions = Contribution.paginate(:order => 'updated_at DESC', :include => :participant, :page => params[:page])
   end
   
   def new
