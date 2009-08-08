@@ -1,5 +1,5 @@
 class ParticipantsController < ApplicationController
-  before_filter :login_required, :only => [:edit, :update, :delete]
+  before_filter :login_required, :except => [:show, :index]
 
   def index
     @participants = Participant.top_scorers.paginate(:page => params[:page], :per_page => 25)

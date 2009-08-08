@@ -30,6 +30,12 @@ class VisitorTest < ActionController::IntegrationTest
       assert_contain 'Tsk. tsk. tsk. Stop being naughty.'
     end
 
+    should 'not be able to add a new Participant' do
+      visit new_participant_path
+      assert_path participants_path
+      assert_contain 'Tsk. tsk. tsk. Stop being naughty.'
+    end
+
     should 'be able to report a scoring issue' do
       assert Issue.count.zero?
       visit root_path
