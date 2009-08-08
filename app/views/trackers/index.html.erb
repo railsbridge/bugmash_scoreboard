@@ -3,7 +3,7 @@
     <tr>
       <td><%= tracker.saved_entry.author %> [<%= tracker.id %>]</td>
       <td><%= tracker.saved_entry.title %></td>
-      <td><%= tracker.saved_entry.content %></td>
+      <td><%= truncate(tracker.saved_entry.content, :length => 100) %></td>
     </tr>          
   <% end %>
 </table>
