@@ -1,6 +1,7 @@
 <table>
   <% @trackers.each do |tracker| %>
     <tr>
+      <td><%= track.saved_entry.author %></td>
       <td><%= tracker.saved_entry.title %></td>
       <td><%= tracker.saved_entry.content %></td>
     </tr>          
