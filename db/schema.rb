@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090806181848) do
+ActiveRecord::Schema.define(:version => 20090808150732) do
 
   create_table "contributions", :force => true do |t|
     t.integer  "participant_id"
@@ -63,6 +63,13 @@ ActiveRecord::Schema.define(:version => 20090806181848) do
 
   add_index "participants", ["active"], :name => "index_participants_on_active"
   add_index "participants", ["name", "lighthouse_id"], :name => "index_participants_on_name_and_lighthouse_id"
+
+  create_table "trackers", :force => true do |t|
+    t.integer  "ticket_id"
+    t.text     "saved_entry"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"

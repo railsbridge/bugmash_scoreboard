@@ -37,6 +37,8 @@ class Contribution < ActiveRecord::Base
   def self.process_entries(entries)
     entries.each do |entry|
       ticket_id = extract_ticket_id(entry)
+      tracker = Tracker.create(:ticket_id => ticket_id, :saved_entry => entry)
+      
       unless ticket_id.zero?
         running_total = 0
         

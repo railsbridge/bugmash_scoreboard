@@ -64,6 +64,12 @@ class ContributionTest < ActiveSupport::TestCase
       Contribution.create!(:lighthouse_id => 2999, :point_value => 25)
     end
     
+    should 'generate an Entry' do
+      assert Tracker.count.zero?
+      Contribution.process_entries([Entry.new(@participant.name, 'I broke something [#3000]', 'Yippee-ki-yay')])
+      assert ! Tracker.count.zero?
+    end
+    
     should 'add the value to Participant#score' do
       Contribution.process_entries([Entry.new(@participant.name, 'I broke something [#3000]', 'Yippee-ki-yay')])
       @participant.reload
