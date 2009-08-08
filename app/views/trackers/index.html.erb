@@ -1,0 +1,8 @@
+<table>
+  <% @trackers.each do |tracker| %>
+    <tr>
+      <td><%= tracker.saved_entry.title %></td>
+      <td><%= tracker.saved_entry.content %></td>
+    </tr>          
+  <% end %>
+</table>
