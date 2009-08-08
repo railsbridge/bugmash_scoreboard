@@ -10,7 +10,7 @@
 <% end %>
 
 <table>
-  <caption>Scores updated as of: <%= @time_stamp %></caption>
+  <caption>Scores updated <%= time_ago_in_words(@time_stamp) %> ago</caption>
   <tr>
     <th>Name</th>
     <th>Score</th>
