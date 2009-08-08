@@ -7,7 +7,7 @@
   
   <% @issues.each do |issue| %>
     <tr>
-      <td><%= issue.contributor_name %></td>
+      <td><%= edit_issue_path(issue.contributor_name) %></td>
       <td><%= issue.lighthouse_id %></td>
       <td><%= truncate(issue.details) %></td>
     </tr>
