@@ -3,7 +3,7 @@ require File.join(File.dirname(__FILE__), '..', 'test_helper')
 class VisitorTest < ActionController::IntegrationTest
   context 'A visitor to the site' do
     setup do
-      stub(Contribution).dummy.stub!.updated_at {Time.now}
+      stub(Contribution).dummy.stub!.first.stub!.updated_at {Time.now}
       @participant = Factory(:participant)
     end
 
