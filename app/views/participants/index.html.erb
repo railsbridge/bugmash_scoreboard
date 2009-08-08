@@ -4,7 +4,7 @@
   </p>
   <ul>
     <% @latest_contributions.each do |contribution| %>
-      <li><%= link_to(contribution.participant.name, contribution.participant) %> [<%= contribution.point_value %> pts for <%= contribution.point_value %>] <em><%= time_ago_in_words(contribution.created_at)  %> ago</em>.</li>
+      <li><%= link_to(contribution.participant.name, contribution.participant) %> [<%= contribution.point_value %> pts for <%= link_to(contribution.lighthouse_id, "https://rails.lighthouseapp.com/projects/8994/tickets/#{contribution.lighthouse_id}") %>] <em><%= time_ago_in_words(contribution.created_at)  %> ago</em>.</li>
     <% end %>
   </ul>
 <% end %>
