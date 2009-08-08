@@ -3,7 +3,7 @@ class CreateTrackers < ActiveRecord::Migration
     create_table :trackers do |t|
       t.integer :ticket_id
       t.text :saved_entry
-
+      t.boolean :ignore, :default => false
       t.timestamps
     end
   end

@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20090808150732) do
   create_table "trackers", :force => true do |t|
     t.integer  "ticket_id"
     t.text     "saved_entry"
+    t.boolean  "ignore",      :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
