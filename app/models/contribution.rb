@@ -16,7 +16,7 @@ class Contribution < ActiveRecord::Base
   end
 
   def self.checked?(content)
-    content[/(verified|no[nt].reproduc)/i]
+    content[/(verified|reproduc)/i]
   end
   
   def self.changeset?(content)
