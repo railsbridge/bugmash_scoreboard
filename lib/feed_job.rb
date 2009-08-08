@@ -5,6 +5,6 @@ class FeedJob < Struct.new(:feed_id)
     Contribution.process_entries(feed.reader.new_entries) if feed.reader.has_new_entries?
     feed.save
     Delayed::Job.enqueue(FeedJob.new(feed_id), 0, Time.now + 5.minutes)
-    Contribution.first.touch # we're the dummy Contribution as our timestamp
+    Contribution.dummy.first.touch # we're the dummy Contribution as our timestamp
   end
 end
