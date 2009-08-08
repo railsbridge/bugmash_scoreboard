@@ -20,7 +20,7 @@ class Contribution < ActiveRecord::Base
   end
   
   def self.changeset?(content)
-    content[/\[\#(\d{3,}) state:(resolved|committed)\]/]
+    content[/\[\#(\d{3,}) (state|status):(resolved|committed)\]/]
   end
 
   def self.patch?(content)
