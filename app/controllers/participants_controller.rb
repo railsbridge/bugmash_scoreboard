@@ -24,7 +24,7 @@ class ParticipantsController < ApplicationController
     @participant = Participant.new(params[:participant])
 
     if @participant.save
-      flash[:notice] = "You're signed up for the BugMash!"
+      flash[:notice] = "Participant created"
       redirect_to(edit_participant_path(@participant))
     else
       render :action => "new"

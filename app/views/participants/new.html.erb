@@ -1,23 +1,12 @@
 <% form_for(@participant) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
+  <div>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %>
-    <%= f.text_field :password_confirmation %>
-  </p>
-  <p>
+  </div>
+  
+  <div>
     <%= f.submit 'Sign me up' %>
-  </p>
+  </div>
 <% end %>
