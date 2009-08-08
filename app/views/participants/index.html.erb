@@ -4,13 +4,13 @@
   </p>
   <ul>
     <% @latest_contributions.each do |contribution| %>
-      <li><%= link_to(contribution.participant.name, contribution.participant) %> [<%= contribution.point_value %>] <em><%= time_ago_in_words(contribution.created_at)  %> ago</em>. Official results will be released when the BugMash ends.</li>
+      <li><%= link_to(contribution.participant.name, contribution.participant) %> [<%= contribution.point_value %>] <em><%= time_ago_in_words(contribution.created_at)  %> ago</em>.</li>
     <% end %>
   </ul>
 <% end %>
 
 <table>
-  <caption>Scores updated <%= time_ago_in_words(@time_stamp) %> ago</caption>
+  <caption>Scores updated <%= time_ago_in_words(@time_stamp) %> ago. Official results will be released when the BugMash ends.</caption>
   <tr>
     <th>Name</th>
     <th>Score</th>
