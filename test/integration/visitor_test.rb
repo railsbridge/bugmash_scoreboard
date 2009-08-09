@@ -44,7 +44,7 @@ class VisitorTest < ActionController::IntegrationTest
       assert_have_no_selector :input, :type => 'checkbox'
       fill_in 'Your name', :with => 'John McClane'
       fill_in 'Email', :with => 'jmmclane@diehard.com'
-      fill_in 'Lighthouse Number', :with => '3000'
+      fill_in 'Lighthouse Ticket Number', :with => '3000'
       fill_in 'Details', :with => 'I want moar points.'
       click_button 'Send'
       assert_path participants_path
