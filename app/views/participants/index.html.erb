@@ -10,14 +10,21 @@
 <% end %>
 
 <table>
-  <caption>Scores updated <%= time_ago_in_words(@time_stamp) %> ago. Official results will be released when the BugMash ends.</caption>
+  <caption>
+    <% if @time_stamp.present? %>
+      Scores updated <%= time_ago_in_words(@time_stamp) if @time_stamp %> ago.
+    <% end %>
+    Official results will be released when the BugMash ends.
+  </caption>
   <tr>
+    <th>Place</th>
     <th>Name</th>
     <th>Score</th>
   </tr>
 
-<% @participants.each do |participant| %>
+<% @participants.each_with_index do |participant, index| %>
   <tr>
+    <th><%= index + 1 + ((@participants.current_page - 1) * @participants.per_page) %></th>
     <td><%= link_to(h(participant.name), participant) %></td>
     <td><%= participant.score %></td>
   </tr>

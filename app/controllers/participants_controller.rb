@@ -5,7 +5,7 @@ class ParticipantsController < ApplicationController
     @participants = Participant.paginate(:page => params[:page], :per_page => 25, :order => 'score DESC')
     @latest_contributions = Contribution.last_five
     # we're using the seeded contribution as our timestamp
-    @time_stamp = Contribution.dummy.first.updated_at 
+    @time_stamp = Contribution.dummy.first.try(:updated_at)
   end
 
   def show
