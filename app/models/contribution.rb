@@ -24,7 +24,7 @@ class Contribution < ActiveRecord::Base
   end
 
   def self.patch?(content)
-    content[/attached a patch/]
+    content[/attached a patch/i]
   end
 
   def self.extract_ticket_id(entry)
